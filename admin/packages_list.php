@@ -21,6 +21,7 @@ $packages = getPackages($conn);
                 <th>Type</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Action</th>
 			</tr>
 			<?php foreach($packages as $package): ?>
 			<tr>
@@ -28,6 +29,7 @@ $packages = getPackages($conn);
                 <td><?php echo $package['type']; ?></td>
                 <td><?php echo nl2br(substr($package['description'], 0, 50))." ..."; ?></td>
                 <td><?php echo $package['price']; ?></td>
+                <td><a href="packages_single.php?id=<?php echo $package['id'] ?>">view<a></td>
 			</tr>
 			<?php endforeach; ?>		
 		</table>

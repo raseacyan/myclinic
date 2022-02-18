@@ -117,6 +117,31 @@ function getPackageByCustomerId($id, $conn){
 }
 
 
+function getPackageRegesitrationsByPackageId($id, $conn){
+	$sql = "SELECT p.registered_date, p.expiry_date, p.payment, c.name as customer_name
+    FROM package_registrations AS p, customers AS c
+    WHERE p.customer_id=c.id AND p.package_id={$id}";
+	
+	$result = $conn->query($sql);
+	if($result){
+		$data = array();
+		if($result->num_rows > 0){
+			
+			While($row = $result->fetch_assoc()){
+				 array_push($data, $row);
+			}
+			return $data;		
+		}else{			
+			return false;
+		}
+	}else{
+		echo $conn->error;		
+		return false;
+	}
+}
+
+
+
 /*******************
 Customers
 ********************/
