@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2022 at 11:33 AM
+-- Generation Time: Mar 14, 2022 at 10:05 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.3.27
 
@@ -31,10 +31,24 @@ CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `time` varchar(8) NOT NULL,
+  `patient_name` varchar(32) NOT NULL,
+  `patient_phone` varchar(32) NOT NULL,
+  `patient_address` text NOT NULL,
+  `patient_age` int(11) NOT NULL,
+  `new_patient` int(2) NOT NULL,
+  `status` varchar(8) NOT NULL,
+  `token_number` int(11) DEFAULT NULL,
   `doctor_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `date`, `time`, `patient_name`, `patient_phone`, `patient_address`, `patient_age`, `new_patient`, `status`, `token_number`, `doctor_id`, `customer_id`, `created_on`) VALUES
+(2, '2022-03-13', '10:00', 'Effy Stonem', '12345678', 'Bristol, England', 18, 1, 'tbc', NULL, 1, 1, '2022-03-13 10:24:44');
 
 -- --------------------------------------------------------
 
@@ -204,7 +218,7 @@ ALTER TABLE `package_registrations`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customers`
